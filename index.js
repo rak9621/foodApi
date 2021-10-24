@@ -54,6 +54,61 @@ app.get('/:id',async (req,res) => {
   })
 
 
+
+
+  app.delete('/', async (req,res)=> {
+  
+    try {
+    
+      const result  = await FoodData.deleteMany()
+    
+      res.status(401).send(result)
+    
+        
+    } catch (e) {
+  
+      res.status(201).send(e)
+  
+    }
+    })
+  
+  
+    app.delete('/:id',async (req,res)=> {
+  
+      try {
+      
+        const _id = req.params.id
+         
+        const result  = await FoodData.findByIdAndDelete({_id})
+      
+        res.status(401).send(result)
+      
+          
+      } catch (e) {
+  
+        res.status(201).send(e)
+        
+      }
+  
+  
+      })
+  app.patch('/:id',async (req,res)=> {
+  
+        try {
+        
+          const _id = req.params.id
+           
+          const result  = await FoodData.findByIdAndUpdate({_id},req.body,{ new :true})
+        
+              res.status(401).send(result)
+            
+        } catch (e) {
+  
+              res.status(201).send(e)
+        }
+
+  })
+
 app.listen(port ,(req,res) => {
 
     console.log("your server is now started")

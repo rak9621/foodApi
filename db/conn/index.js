@@ -7,7 +7,8 @@ dotenv.config()
 
 const mongodb = process.env.DB_CONN;
 
-mongoose.connect(mongodb, { useNewUrlParser: true }).then(() => {
+mongoose.connect(mongodb, { useNewUrlParser : true, 
+    useUnifiedTopology: true  }).then(() => {
 
     console.log("database is succsfully connected")
 
