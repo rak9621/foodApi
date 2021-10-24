@@ -8,14 +8,8 @@ require('./db/conn')
 
 app.use(express.json())
 
-app.use(
-    cors({
-             credentials: true,
-             origin: true
-     })
-);
+app.use(cors())
 
-app.options('*', cors());
 
 app.get('/' ,async (req,res) => {
     try {
